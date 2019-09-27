@@ -1,0 +1,60 @@
+algorithm file for NQueens project
+
+Goal: -Take user input and create a vector that simulates a square 2d array off of the input
+      -Run a version of N-queens off of this input and then store the completed vector in a node
+      -Multiple nodes will then be used to organize the data in a binary search tree that will
+      -be able to outfile the solutions in order
+
+Input: -User responses for the board size
+
+Output: A text file showing the solutions in ascending order
+
+Board class:
+	-The Board class will have two member variables, a vector and an int
+	-It will only have a non-null constructor that requires an integer as a parameter
+	-It will have a getter that returns the length of one side of the vector
+	-It will also have a getter that returns the value of a specified element of the vector
+	-It will have two different setter methods, one to make the value at an element 1, and one to
+	-make a value at an element 0
+	-The Board class will also have a printBoard method that requires an of stream parameter
+
+NQueen class:
+	-The NQueen class will have a Board member object
+	-It will need a constructor that takes an int as a parameter, and a destructor that deletes 
+	-the Board object 
+	-It will need need two different methods to run the N-Queens program
+		-One with no parameters will call the other
+		-The other will recursively fill the Board with queens that cannot attack each other
+		-As each queen is placed on the board a method will be called that will check the horizontal
+		-axis and the positive and negative slopes that the queen can attack on
+		-If that queen is safe it can stay, if not it will be removed and the next placement in
+		-the column will be tried
+		--This is an exhaustive backtracking method so the size of the vector will have to be limited 
+		--when users are given control over size
+	-The Nqueen class will also need ways to alter the Board member object
+	-The method for checking the slope's will need to have a way to get to the correct location
+	-even with it being a one-dimensional vector
+
+Node class:
+	-The Node class will have left and right node pointers, two int variables, and a NQueen member
+	-object
+	-It will also need setters and getters for the pointers, variables, and member object
+	-One int can be ommited for the setters and getters, it is only there so that an inherited class
+	-will have access to it
+
+Bstree class:
+	-Will have a Node pointer called root
+	-A method to delete all of the Nodes in the tree that the destructor will call
+	-A method for createing and adding Nodes
+	-A method that allows it to outfile all of the information on its nodes to a text file
+	--This should be done with an inorder traversal 
+
+Main:
+	-Will create an ofstrea object and open a text file with it
+	-Will create an Bstree object
+	-Will run a boolean while loop to control a menu
+	-Will have an option to add a node, save the tree and outfile, and exit
+
+
+
+
